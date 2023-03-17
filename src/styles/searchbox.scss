@@ -1,0 +1,32 @@
+@use './variables.scss';
+
+.navBarContainer {
+  @include variables.centeredDiv();
+  color: variables.$yellow;
+  height: 70px;
+  background-color: variables.$yellow;
+  width: 100%;
+}
+
+.autoComplete {
+  width: 70%;
+  input {
+    height: 40px;
+    font-size: variables.$searchBoxFontSize;
+    border-radius: 3px;
+  }
+}
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-input-search
+  > .ant-input-group
+  > .ant-input-group-addon:last-child
+  .ant-input-search-button:not(.ant-btn-primary) {
+  background-color: variables.$white;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}
+
+.logoContainer {
+  margin-right: 25px;
+}
