@@ -1,0 +1,31 @@
+$yellow: #ffe600;
+$black: #333333;
+$darkgray: #666666;
+$gray: #999999;
+$lightgray: #eeeeee;
+$blue: #3483fa;
+$white: #ffffff;
+
+$small-margin: 16px;
+$big-margin: 32px;
+
+$searchBoxFontSize: 18px;
+$detail-sold-fontsize: 14px;
+$detail-title-fontsize: 24px;
+
+$items-title-fontsize: 18px;
+$items-state-fontsize: 12px;
+$items-amount-fontsize: 24px;
+$items-categories-fontsize: 14px;
+
+@mixin itemsImageSize {
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+
+@mixin centeredDiv {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

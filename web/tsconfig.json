@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["ES5", "ES6", "DOM"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src",
+    "src/api",
+    "api/routes.ts",
+    "api/service",
+    "api/controller",
+    "web/react-app-env.d.ts",
+    "web/setupTests.ts",
+    "web/index.tsx",
+    "web/App.test.tsx",
+    "web/types",
+    "web/hooks/useSearchItems",
+    "web/axios",
+    "web/context",
+    "web/features"
+  ]
+}

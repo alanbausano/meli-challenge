@@ -1,0 +1,28 @@
+.navBarBackground {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #ffe600;
+  height: 70px;
+  background-color: #ffe600;
+  width: 100%;
+}
+
+.navBarContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.autoComplete input {
+  height: 40px;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button:not(.ant-btn-primary) {
+  background-color: #eeeeee;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+}/*# sourceMappingURL=searchbox.css.map */

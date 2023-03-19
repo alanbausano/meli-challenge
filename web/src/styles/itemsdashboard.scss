@@ -1,0 +1,64 @@
+@use './variables.scss';
+
+.items-background {
+  width: 100%;
+  background-color: variables.$lightgray;
+  @include variables.centeredDiv();
+  flex-direction: column;
+}
+
+.items-container {
+  @include variables.centeredDiv();
+  flex-direction: column;
+  width: 100%;
+  background: variables.$white;
+  margin-bottom: 85px;
+}
+
+.items-categories {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: variables.$small-margin 0;
+}
+
+.item-card {
+  width: 100%;
+  padding: variables.$small-margin;
+  cursor: pointer;
+}
+
+.items-amount {
+  font-size: variables.$items-amount-fontsize;
+  margin: variables.$small-margin 0 variables.$big-margin 0;
+}
+
+.items-image {
+  @include variables.itemsImageSize();
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+.items-image-container {
+  margin-right: variables.$small-margin;
+}
+
+.items-title {
+  font-size: variables.$items-title-fontsize;
+}
+
+.items-state {
+  margin: variables.$small-margin 0 variables.$big-margin 0;
+  font-size: variables.$items-state-fontsize;
+  color: variables.$darkgray;
+  height: variables.$items-amount-fontsize;
+  display: flex;
+  align-items: center;
+}
+
+.items-shipping-icon {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
