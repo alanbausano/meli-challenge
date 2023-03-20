@@ -18,14 +18,14 @@ Para correr localmente:
 
 ### Api
 
-Ingresar a api e instalar dependencias. Luego correr el servidor.
+Ingresar a api e instalar dependencias. Generar el archivo .env como lo indica el template. Luego correr el servidor.
 ```
 $ cd api & npm install
 $ npm run server
 ```
 ### Front
 
-Ingresar a web e instalar dependencias. Luego iniciarla.
+Ingresar a web e instalar dependencias. Generar el archivo .env como lo indica el template. Luego iniciarla.
 ```
 $ cd web & npm install
 $ npm start
