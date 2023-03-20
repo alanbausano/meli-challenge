@@ -1,0 +1,85 @@
+@use './variables.scss';
+.detail-container {
+  @include variables.centeredDiv();
+  width: 100%;
+  background-color: variables.$lightgray;
+  padding: 0 0 80px 0;
+}
+
+.detail-product {
+  @include variables.centeredDiv();
+  width: 100%;
+  background: variables.$white;
+}
+
+.detail-image-container {
+  background-color: variables.$white;
+  min-height: 100%;
+}
+
+.detail-item {
+  width: 100%;
+  min-height: 100%;
+}
+
+.detail-info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: inherit;
+  padding-top: variables.$big-margin;
+  background-color: variables.$white;
+  min-height: 100%;
+}
+
+.detail-image {
+  width: 680px;
+  height: 680px;
+  object-fit: contain;
+}
+.detail-condition {
+  font-size: variables.$items-categories-fontsize;
+  margin-bottom: variables.$small-margin;
+}
+.detail-title {
+  font-size: variables.$detail-title-fontsize;
+  margin-bottom: variables.$big-margin;
+  font-weight: 600;
+}
+.detail-price {
+  font-size: variables.$items-details-amount-fontsize;
+  margin-bottom: variables.$big-margin;
+}
+.detail-button {
+  width: 100%;
+  padding-right: variables.$big-margin;
+  button {
+    width: 100%;
+    height: 42px;
+  }
+}
+.detail-description-container {
+  @include variables.centeredDiv();
+}
+.detail-description {
+  background-color: variables.$white;
+}
+.detail-description-empty {
+  width: 100%;
+  height: fit-content;
+  background-color: variables.$white;
+}
+.detail-description-title {
+  font-size: variables.$description-title-fontsize;
+  margin: variables.$big-margin 0 variables.$big-margin variables.$big-margin;
+}
+.detail-description {
+  margin: 0 0 variables.$big-margin variables.$big-margin;
+  color: variables.$gray;
+}
+
+.spin-container {
+  @include variables.centeredDiv();
+  width: 100%;
+  height: 50vh;
+}

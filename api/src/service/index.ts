@@ -30,7 +30,6 @@ const searchProductsService = async (query: string) => {
   const categories = filteredAttributes.map(
     (attribute: { value_name: string }) => attribute.value_name
   )
-  console.log(categories)
   const items = results.map((result: SearchDataResponse) => {
     const item: SearchResponse = {
       author: {
@@ -74,31 +73,50 @@ const searchByIdService = async (itemId?: string) => {
     currency_id,
     seller_id,
     price,
-    thumbnail,
-    condition,
+    pictures,
     shipping,
-    sold_quantity
+    sold_quantity,
+    attributes
   } = response.data
+  const filteredCondition = attributes.filter(
+    (attribute: { id: string }) => attribute.id === 'ITEM_CONDITION'
+  )
+  const filteredCategories = attributes.filter(
+    (attribute: { id: string }) =>
+      attribute.id === 'BRAND' || attribute.id === 'LINE' || attribute.id === 'ITEM_CONDITION'
+  )
+  const condition = filteredCondition[0].value_name
+  const categories = filteredCategories.map(
+    (category: { value_name: string }) => category.value_name
+  )
   const descriptionResponse = await axios.get(`${url!}/${itemId}/description`)
   const searchResponse = await axios.get(`${searchUrl!}`, {
     params: { seller_id }
   })
   const { seller } = searchResponse.data
   const { plain_text } = descriptionResponse.data
+  const picture = pictures[0].url
   const itemById = {
     author: {
       name: seller.nickname,
       lastname: author?.lastname
     },
+    categories,
     item: {
       id,
       title,
       price: {
         currency: currency_id,
-        amount: price,
+        amount: price
+          .toLocaleString('en-US', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+            useGrouping: true
+          })
+          .replace(/,/g, '.'),
         decimals: 2
       },
-      picture: thumbnail,
+      picture,
       condition,
       free_shipping: shipping.free_shipping,
       sold_quantity,

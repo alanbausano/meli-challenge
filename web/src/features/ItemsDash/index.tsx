@@ -1,22 +1,25 @@
 /* eslint-disable react/jsx-fragments */
 import '../../styles/itemsdashboard.css'
 
-import { Breadcrumb, Col, Divider, Row, Spin } from 'antd'
-import { ItemType } from 'antd/es/breadcrumb/Breadcrumb'
+import { Col, Divider, Row, Spin } from 'antd'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import shipping from '../../assets/ic_shipping.png'
+import { BreadCrumb } from '../../components/BreadCrumb'
 import { SearchedItemsContext } from '../../context/SearchedItemsContext'
+import { SelectedItemContext } from '../../context/SelectedItemContext'
 import useItems from '../../hooks/useSearchItems'
 
 export const ItemsDash = () => {
   const { searchedItems } = useContext(SearchedItemsContext)
+  const { setSelectedItem } = useContext(SelectedItemContext)
   const history = useHistory()
   const { getSelectedItem, isLoading, isSelectedLoading } = useItems()
   const handleSelectItem = (itemId: string) => {
     getSelectedItem(itemId, {
       onSuccess: data => {
+        setSelectedItem(data)
         history.push(`/items/${itemId}`)
       }
     })
@@ -25,15 +28,7 @@ export const ItemsDash = () => {
     <Spin spinning={isLoading || isSelectedLoading}>
       <Row className="items-background">
         <Col span={15} className="items-categories">
-          <Breadcrumb
-            separator=">"
-            items={
-              searchedItems &&
-              (searchedItems[0]?.categories?.map(cat => {
-                return { title: cat }
-              }) as unknown as ItemType[])
-            }
-          />
+          <BreadCrumb searchedItems={searchedItems} />
         </Col>
         <Col className="items-container" span={15}>
           {searchedItems?.map(itemMapped => (
