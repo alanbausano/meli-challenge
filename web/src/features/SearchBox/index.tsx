@@ -1,6 +1,6 @@
 import '../../styles/searchbox.css'
 
-import { Col, Input, Row } from 'antd'
+import { Col, Input, notification, Row } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -15,8 +15,10 @@ interface RouteParams {
   id: string
 }
 
+// Componente de buscador
 export const SearchBox: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string | undefined>()
+  // Obtiene los métodos del custom hook useItems
   const { getSelectedItem, getSearchedItems, isLoading } = useItems()
   const { setSelectedItem } = useContext(SelectedItemContext)
   const { setSearchedItems } = useContext(SearchedItemsContext)
@@ -26,11 +28,17 @@ export const SearchBox: React.FC = () => {
   const handleChange = (value: string) => {
     setSearchValue(value)
   }
+
+  // Evento que dispara la consulta al endpoint, a través del método getSearchedItems recibiendo el state searchValue
   const handleSearch = () => {
     getSearchedItems(searchValue, {
       onSuccess: (data: ItemResponse[]) => {
+        // En caso de que la consulta sea exitosa, se suben los items al context y se dirige a la ruta de items mostrando el listado
         setSearchedItems(data)
         history.push(`/items?search=${searchValue}`)
+      },
+      onError: () => {
+        notification.error({ message: `No se encontró el item ${searchValue || ''}` })
       }
     })
   }

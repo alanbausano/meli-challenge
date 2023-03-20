@@ -16,6 +16,7 @@ interface SearchDataResponse {
   shipping: { free_shipping: boolean }
 }
 
+//Método utilizado para devolver items al listado a través de la query que se ingrese en el buscador
 const searchProductsService = async (query: string) => {
   const url = process.env.SEARCH_API_URL
   const response = await axios.get(url!, {
@@ -30,6 +31,8 @@ const searchProductsService = async (query: string) => {
   const categories = filteredAttributes.map(
     (attribute: { value_name: string }) => attribute.value_name
   )
+
+  // Se devuelven los items con los atributos conseguidos desde la api de Meli
   const items = results.map((result: SearchDataResponse) => {
     const item: SearchResponse = {
       author: {
@@ -62,6 +65,7 @@ const searchProductsService = async (query: string) => {
   return items
 }
 
+//Método utilizado para buscar un item a través del id recibido
 const searchByIdService = async (itemId?: string) => {
   const url = process.env.ID_API_URL
   const searchUrl = process.env.SEARCH_API_URL
@@ -96,6 +100,8 @@ const searchByIdService = async (itemId?: string) => {
   const { seller } = searchResponse.data
   const { plain_text } = descriptionResponse.data
   const picture = pictures[0].url
+
+  // Se devuelve el item con los atributos conseguidos desde la api de Meli
   const itemById = {
     author: {
       name: seller.nickname,

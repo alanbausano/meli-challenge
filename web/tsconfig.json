@@ -31,5 +31,5 @@
     "web/axios",
     "web/context",
     "web/features"
-  ]
+, "src/setupTests.ts"  ]
 }

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-fragments */
 import '../../styles/itemsdashboard.css'
 
-import { Col, Divider, Row, Spin } from 'antd'
+import { Col, Divider, notification, Row, Spin } from 'antd'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -11,16 +11,23 @@ import { SearchedItemsContext } from '../../context/SearchedItemsContext'
 import { SelectedItemContext } from '../../context/SelectedItemContext'
 import useItems from '../../hooks/useSearchItems'
 
+// Componente que muestra el listado de items obtenidos a través del buscador
 export const ItemsDash = () => {
   const { searchedItems } = useContext(SearchedItemsContext)
   const { setSelectedItem } = useContext(SelectedItemContext)
   const history = useHistory()
   const { getSelectedItem, isLoading, isSelectedLoading } = useItems()
+
+  // Evento que obtiene el item seleccionado del listado y lo muestra en su correspondiente componente
   const handleSelectItem = (itemId: string) => {
     getSelectedItem(itemId, {
       onSuccess: data => {
+        // Se sube el item al context para luego ser consumido desde el componente del detalle
         setSelectedItem(data)
         history.push(`/items/${itemId}`)
+      },
+      onError: () => {
+        notification.error({ message: `No se encontró el item con el id ${itemId || ''}` })
       }
     })
   }

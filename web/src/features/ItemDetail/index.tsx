@@ -6,7 +6,9 @@ import { useContext } from 'react'
 import { BreadCrumb } from '../../components/BreadCrumb'
 import { SelectedItemContext } from '../../context/SelectedItemContext'
 
+// Componente que muestra el detalle del producto seleccionado en el listado
 export const ItemDetail = () => {
+  // Se obtiene el item del context
   const { selectedItem } = useContext(SelectedItemContext)
 
   return selectedItem ? (
