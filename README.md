@@ -19,11 +19,14 @@ Para correr localmente:
 ### Api
 
 Ingresar a api e instalar dependencias. Luego correr el servidor.
+```
 $ cd api & npm install
 $ npm run server
-
+```
 ### Front
 
 Ingresar a web e instalar dependencias. Luego iniciarla.
+```
 $ cd web & npm install
 $ npm start
+```
